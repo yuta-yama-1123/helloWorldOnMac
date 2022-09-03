@@ -11,7 +11,7 @@ class TimerModel: ObservableObject{
     @Published var remaining: Double = 0.00
     let interval: Double = 0.05 // タイマー処理ループ間隔
     var soundFlg: Bool = false
-    @Published var progress: Double = 0.0
+    @Published var progress: CGFloat = 0.0
     @Published var showingAlert: Bool = false
     // アラーム音声ファイル読み込み
     private let shining_star = try!  AVAudioPlayer(data: NSDataAsset(name: "shining_star")!.data)
@@ -26,12 +26,6 @@ class TimerModel: ObservableObject{
     private func stopShiningStar() {
         shining_star.stop()             // 停止
         shining_star.currentTime = 0.0  // 頭出し※最初から再生するため
-    }
-    private func calcProgress() {
-        progress = ( (timeLimit - count) / timeLimit )
-        print(timeLimit)
-        print(count)
-        print(progress)
     }
     // タイマー処理の開始
     func start(_ timeRemaining: Double = 10.00){
@@ -55,15 +49,16 @@ class TimerModel: ObservableObject{
             .sink(
                 receiveValue: (
                     {_ in
-                        // 設定した時間ごとに呼ばれる
-                        self.count -= self.interval
-                        self.countStr = String(format: "%.1f", self.count)
-                        self.remaining += self.interval
-                        if (self.count < 0.05) {
-                            self.shiningStar()
-                            self.timer?.cancel()
-                          self.showingAlert = true
-                        }
+                      // 設定した時間ごとに呼ばれる
+                      self.count -= self.interval
+                      self.countStr = String(format: "%.1f", self.count)
+                      self.remaining += self.interval
+                      self.progress = ( (self.timeLimit - self.count) / self.timeLimit )
+                      if (self.count < 0.05) {
+                          self.shiningStar()
+                          self.timer?.cancel()
+                        self.showingAlert = true
+                      }
                     }
                 )
             )

@@ -11,11 +11,14 @@ struct ContentView: View {
   @ObservedObject var timerController =  TimerModel()
   @State var intervalMinute = 0 // タイマー時間(分)
   @State var intervalSecond = 0
+  @State var value: Double = 0.0
+  @State var progress: CGFloat = 0.0
   
   // デフォルト値の設定
   init() {
-      _intervalMinute = State(initialValue: 2)
-      _intervalSecond = State(initialValue: intervalMinute * 60)
+    _intervalMinute = State(initialValue: 2)
+    _intervalSecond = State(initialValue: intervalMinute * 60)
+    progress = timerController.progress
   }
   
   // 画面表示設定
@@ -66,8 +69,12 @@ struct ContentView: View {
         if(timerController.timer == nil){
           intervalSecond = intervalMinute * 60
           timerController.start(Double(intervalSecond))
+          withAnimation(.linear(duration: Double(intervalSecond))) {
+              self.value = 1.0
+          }
         }else{
           timerController.stop()
+          self.value = 0.0
         }
       }) {
         Text("\((timerController.timer != nil) ? "Stop" : "(Re)Start")")
@@ -108,17 +115,14 @@ struct ContentView: View {
                           design: .rounded
                       )
                   )
-              ProgressView(
-                  value: timerController.remaining,
-                  total: Double(intervalSecond)
-              )
-              .frame(width: 400, height: 50, alignment: .center)
-              .offset(y: -30)
+            SquareProgressView(progress: $timerController.progress, fullWidth: 400)
+                .frame(width: 400, height: 20)
+                .cornerRadius(10)
           }
     }
     .frame(
       width: 600,
-      height: 500)
+      height: 600)
     .alert(isPresented: $timerController.showingAlert) {
       Alert(
         title: Text("JUST DO IT!!"),
