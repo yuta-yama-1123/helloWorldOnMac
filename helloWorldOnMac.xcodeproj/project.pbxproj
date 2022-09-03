@@ -14,6 +14,7 @@
 		03C22A2528C324A400BF7D10 /* helloWorldOnMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C22A2428C324A400BF7D10 /* helloWorldOnMacTests.swift */; };
 		03C22A2F28C324A400BF7D10 /* helloWorldOnMacUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C22A2E28C324A400BF7D10 /* helloWorldOnMacUITests.swift */; };
 		03C22A3128C324A400BF7D10 /* helloWorldOnMacUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C22A3028C324A400BF7D10 /* helloWorldOnMacUITestsLaunchTests.swift */; };
+		03C22A3E28C3295300BF7D10 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C22A3D28C3295300BF7D10 /* TimerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		03C22A2A28C324A400BF7D10 /* helloWorldOnMacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = helloWorldOnMacUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C22A2E28C324A400BF7D10 /* helloWorldOnMacUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helloWorldOnMacUITests.swift; sourceTree = "<group>"; };
 		03C22A3028C324A400BF7D10 /* helloWorldOnMacUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helloWorldOnMacUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		03C22A3D28C3295300BF7D10 /* TimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				03C22A1428C324A300BF7D10 /* ContentView.swift */,
 				03C22A1628C324A400BF7D10 /* Assets.xcassets */,
 				03C22A1B28C324A400BF7D10 /* helloWorldOnMac.entitlements */,
+				03C22A3D28C3295300BF7D10 /* TimerModel.swift */,
 				03C22A1828C324A400BF7D10 /* Preview Content */,
 			);
 			path = helloWorldOnMac;
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C22A3E28C3295300BF7D10 /* TimerModel.swift in Sources */,
 				03C22A1528C324A300BF7D10 /* ContentView.swift in Sources */,
 				03C22A1328C324A300BF7D10 /* helloWorldOnMacApp.swift in Sources */,
 			);

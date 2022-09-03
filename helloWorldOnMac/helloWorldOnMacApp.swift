@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct helloWorldOnMacApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  let windowTitle: String = "INTERVAL TIMER"
+  var body: some Scene {
+    WindowGroup {
+      ContentView().navigationTitle(windowTitle)
     }
+  }
 }
